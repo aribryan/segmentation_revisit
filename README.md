@@ -1,5 +1,5 @@
 # A Brief revisit to Medical Image segmentation
-A simple revisit to segmentation with some tissue images
+A simple revisit to segmentation with some tissue image and binary masking. Follow the instructions and download items when necessary. 
 
 ## Installing packages
 Apart from the usual 'Python3.8+Pytorch1.5+cu11.0' we need two more packages. One for patchifying, please install `pip install patchify`. Additionally install albumination package by `pip install albuminations`. Both of these packages will be used to create our dataset. 
