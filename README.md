@@ -5,7 +5,7 @@ A simple revisit to segmentation with some tissue images
 Apart from the usual 'Python3.8+Pytorch1.5+cu11.0' we need two more packages. One for patchifying, please install `pip install patchify`. Additionally install albumination package by `pip install albuminations`. Both of these packages will be used to create our dataset. 
 
 ## Data preparation
-The original data consists of 27 images with resolutions 512x512. Since it is almost impossible to train a simple U-net as it would underfit such an arrangement, we will break the images into patches with the help of patchify package. We will dump the 128x128 resolution images in the `data` folder. Also, unzip the original dataset inside this folder. The rest should be taken care of. 
+The original data consists of 27 images with resolutions 512x512. Since it is almost impossible to train a simple U-net as it would underfit such an arrangement, we will break the images into patches with the help of patchify package. We will dump the 128x128 resolution images in the `data` folder. Also, unzip the original dataset inside this folder. The rest should be taken care of. The data can be downloade from here ([IMAGES](https://1drv.ms/u/s!AvcSUk4cS8jDl05GE9eEA5Wl8kSl?e=bO0wwM), [MASKS](https://1drv.ms/u/s!AvcSUk4cS8jDl02rx3obn3RmpYKW?e=XdB2FI)). Put it in the location as specified. 
 1. Please run `python3 preprocess.py`.
 Once patchify has dumped the corresponding images, we will apply some basic transformation with the help of albumination package. See `ùtils.transform` and you will get an idea of the standard transformations we will use. With stride value of 20 pixels, we will use the following config:
 We use horizontal, vertical and brightness contrast features from the transformation package.
@@ -34,7 +34,7 @@ Train Loss|Validation Dice Loss| Validation mask |
 ## Run inference to see masks
 After you are done with training, we will move towards visualisation of the full resolution images. Since we already don't have enough dataset, we will take the full resolution version of the validation images. Additionally, we will try to count the contours as well. We will use OpenCV's `findContour` functionality.
 
-IMPORTANT: download the pretrained checkpoint from here, and put it inside the directory `log/ckpt/`.
+IMPORTANT: download the pretrained checkpoint from [here](https://1drv.ms/u/s!AvcSUk4cS8jDmAiySnjU_1R485pj?e=qHkcQa), and put it inside the directory `log/ckpt/`.
 
 4. After the pre-trained checkpoints have been placed, along with the validation images, please run the inference code by running `python3 inference.py --gpu_id <int> --ckpt <'./log/ckpt/parametersxxxx'> --image_folder ./results/`
 
